@@ -10,19 +10,25 @@ import java.time.ZoneId;
 
 @RestController
 public class TidemailRestController {
+
+    private final TidemailFormatter tidemailFormatter;
     private final NoaaTideService noaaTideService;
 
-    public TidemailRestController(NoaaTideService noaaTideService){
+    public TidemailRestController(NoaaTideService noaaTideService, TidemailFormatter tidemailFormatter){
         this.noaaTideService = noaaTideService;
+        this.tidemailFormatter = tidemailFormatter;
     }
     
     
 
     @GetMapping("/")
-    public TideResponse getTides(
+    public String getTides(
             @RequestParam(defaultValue = "8518750") String stationID){
+
         String date = LocalDate.now(ZoneId.of("America/New_York")).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-        return noaaTideService.getPredictions(stationID, date);
+
+        TideResponse tideResponse = noaaTideService.getPredictions(stationID, date);
+        return tidemailFormatter.format(tideResponse);
     }
-}
+} 
 
