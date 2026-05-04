@@ -39,7 +39,7 @@ public class TidemailRestController {
       "8531680"
     );
     String body = tidemailFormatter.format(tideResponse, stationResponse);
-    emailService.sendTideMail(emailAddress, body);
+    emailService.sendTideMail("pkmntrnreric@gmail.com", body);
   }
 
   @GetMapping("/")
