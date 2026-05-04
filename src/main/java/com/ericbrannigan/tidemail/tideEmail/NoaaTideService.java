@@ -19,7 +19,7 @@ public class NoaaTideService {
           .path("/api/prod/datagetter")
           .queryParam("station", stationID)
           .queryParam("begin_date", date)
-          .queryParam("range", 24)
+          .queryParam("range", 72)
           .queryParam("product", "predictions")
           .queryParam("datum", "MLLW")
           .queryParam("interval", "hilo")
