@@ -3,8 +3,6 @@ package com.ericbrannigan.tidemail.tideEmail.Classes;
 import com.ericbrannigan.tidemail.tideEmail.Interfaces.UserInterface;
 import java.util.UUID;
 
-//test
-
 public class User implements UserInterface {
 
   UUID userID;
