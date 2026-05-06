@@ -1,8 +1,11 @@
-package com.ericbrannigan.tidemail.tideEmail;
+package com.ericbrannigan.tidemail.tideEmail.Services;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+
+import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseListRecord;
+import com.ericbrannigan.tidemail.tideEmail.Records.TideResponseRecordList;
 
 @Service
 public class NoaaTideService {

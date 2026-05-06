@@ -1,4 +1,4 @@
-package com.ericbrannigan.tidemail.tideEmail;
+package com.ericbrannigan.tidemail.tideEmail.Controller;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -8,6 +8,12 @@ import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ericbrannigan.tidemail.tideEmail.EmailFormatter.TidemailFormatter;
+import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseListRecord;
+import com.ericbrannigan.tidemail.tideEmail.Records.TideResponseRecordList;
+import com.ericbrannigan.tidemail.tideEmail.Services.EmailService;
+import com.ericbrannigan.tidemail.tideEmail.Services.NoaaTideService;
 
 @RestController
 public class TidemailRestController {
