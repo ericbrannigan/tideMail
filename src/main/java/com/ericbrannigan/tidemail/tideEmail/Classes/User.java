@@ -17,6 +17,9 @@ public class User implements UserInterface {
   }
 
   public void setUserID(UUID userID) {
+    if (userID == null) {
+      throw new IllegalArgumentException("userID cannot be null.");
+    }
     this.userID = userID;
   }
 
@@ -25,6 +28,13 @@ public class User implements UserInterface {
   }
 
   public void setEmail(String email) {
+    if (email == null || email.isEmpty()) {
+      throw new IllegalArgumentException("Email cannot be null or empty.");
+    }
+
+    if (!email.contains("@")) {
+      throw new IllegalArgumentException("Enter a valid E-Mail.");
+    }
     this.email = email;
   }
 
@@ -33,6 +43,11 @@ public class User implements UserInterface {
   }
 
   public void setTideStation(String tideStation) {
+    if (tideStation == null || tideStation.isBlank()) {
+      throw new IllegalArgumentException(
+        "Tide Station cannot be null or left blank."
+      );
+    }
     this.tideStation = tideStation;
   }
 
@@ -41,6 +56,11 @@ public class User implements UserInterface {
   }
 
   public void setEmailTime(String emailTime) {
+    if (emailTime == null || emailTime.isBlank()) {
+      throw new IllegalArgumentException(
+        "Time for emails cannot be null or left blank"
+      );
+    }
     this.emailTime = emailTime;
   }
 
@@ -49,6 +69,11 @@ public class User implements UserInterface {
   }
 
   public void setNumberOfDays(int numberOfDays) {
+    if (numberOfDays < 1 || numberOfDays > 14) {
+      throw new IllegalArgumentException(
+        "Number of days cannot be less than 1 or greater than 14 days."
+      );
+    }
     this.numberOfDays = numberOfDays;
   }
 
@@ -57,6 +82,11 @@ public class User implements UserInterface {
   }
 
   public void setPauseEmails(boolean pauseEmails) {
+    if (pauseEmails != true || pauseEmails != false) {
+      throw new IllegalArgumentException(
+        "Pause Emails must be set to Yes or No."
+      );
+    }
     this.pauseEmails = pauseEmails;
   }
 }
