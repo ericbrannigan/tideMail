@@ -1,16 +1,24 @@
 package com.ericbrannigan.tidemail.tideEmail.Classes;
 
 import com.ericbrannigan.tidemail.tideEmail.Interfaces.UserInterface;
+import jakarta.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "users")
 public class User implements UserInterface {
 
-  UUID userID;
-  String email;
-  String tideStation;
-  String emailTime;
-  int numberOfDays;
-  boolean pauseEmails;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID userID;
+
+  private String email;
+  private String tideStation;
+  private String emailTime;
+  private int numberOfDays;
+  private boolean pauseEmails;
+
+  public User() {}
 
   public UUID getUserID() {
     return userID;
