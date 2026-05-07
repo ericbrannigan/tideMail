@@ -1,4 +1,4 @@
-package com.ericbrannigan.tidemail.tideEmail.Services;
+package com.ericbrannigan.tidemail.tideEmail.EmailService;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
