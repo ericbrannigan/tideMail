@@ -10,6 +10,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,23 +32,8 @@ public class TidemailRestController {
     this.emailService = emailService;
   }
 
-  @EventListener(ApplicationReadyEvent.class)
-  public void sendEmailOnStartup() {
-    String date = LocalDate.now(ZoneId.of("America/New_York")).format(
-      DateTimeFormatter.ofPattern("yyyyMMdd")
-    );
-    TideResponseRecordList tideResponse = noaaTideService.getPredictions(
-      "8531680",
-      date
-    );
-    StationResponseListRecord stationResponse = noaaTideService.getStationInfo(
-      "8531680"
-    );
-    String body = tidemailFormatter.format(tideResponse, stationResponse);
-    emailService.sendTideMail("pkmntrnreric@gmaill.com", body);
-  }
 
-  @GetMapping("/")
+  @GetMapping("/tides")
   public String getTides(
     @RequestParam(defaultValue = "8531680") String stationID
   ) {

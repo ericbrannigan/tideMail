@@ -31,17 +31,20 @@ public class EventListenerStartUp {
 
   @EventListener(ApplicationReadyEvent.class)
   public void sendEmailOnStartup() {
-    String date = LocalDate.now(ZoneId.of("America/New_York")).format(
-      DateTimeFormatter.ofPattern("yyyyMMdd")
-    );
-    TideResponseRecordList tideResponse = noaaTideService.getPredictions(
-      "8531680",
-      date
-    );
-    StationResponseListRecord stationResponse = noaaTideService.getStationInfo(
-      "8531680"
-    );
-    String body = tidemailFormatter.format(tideResponse, stationResponse);
-    emailService.sendTideMail("pkmntrnreric@gmail.com", body);
+    try {
+      String date = LocalDate.now(ZoneId.of("America/New_York")).format(
+        DateTimeFormatter.ofPattern("yyyyMMdd")
+      );
+      TideResponseRecordList tideResponse = noaaTideService.getPredictions(
+        "8531680",
+        date
+      );
+      StationResponseListRecord stationResponse =
+        noaaTideService.getStationInfo("8531680");
+      String body = tidemailFormatter.format(tideResponse, stationResponse);
+      emailService.sendTideMail("pkmntrnreric@gmail.com", body);
+    } catch (Exception e) {
+      System.err.println("Email failed: " + e.getMessage());
+    }
   }
 }

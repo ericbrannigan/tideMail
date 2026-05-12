@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}"></title>
+</head>
+<body>
+    <h1 th:text="${testBody}"></h1>
+
+    <form action="/" method="get">
+        <label for="stationID">Station ID:</label>
+        <input type="text" id="stationID" name="stationID"
+               th:value="${stationID}" value="8531680" />
+        <button type="submit">Get Tides</button>
+    </form>
+
+    <div th:if="${tideResults}">
+        <h2>Tide Results</h2>
+        <p th:utext="${tideResults}"></p>
+    </div>
+</body>
+</html>
