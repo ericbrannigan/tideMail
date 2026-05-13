@@ -12,7 +12,7 @@ public class EmailService {
   public EmailService(JavaMailSender mailSender) {
     this.mailSender = mailSender;
   }
-
+  
   public void sendTideMail(String to, String body) {
     SimpleMailMessage message = new SimpleMailMessage();
     message.setTo(to);

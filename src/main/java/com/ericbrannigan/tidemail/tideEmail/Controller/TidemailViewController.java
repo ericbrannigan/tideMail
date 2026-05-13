@@ -35,7 +35,7 @@ public class TidemailViewController {
             String date = LocalDate.now(ZoneId.of("America/New_York"))
                     .format(DateTimeFormatter.ofPattern("yyyyMMdd"));
             TideResponseRecordList tideResponse = noaaTideService.getPredictions(stationID, date);
-            StationResponseListRecord stationResponse = noaaTideService.getStationInfo(stationID);
+            StationResponseRecordList stationResponse = noaaTideService.getStationInfo(stationID);
             String body = tidemailFormatter.format(tideResponse, stationResponse);
             model.addAttribute("tideResults", body);
             model.addAttribute("stationID", stationID);

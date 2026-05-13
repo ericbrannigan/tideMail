@@ -3,7 +3,7 @@ package com.ericbrannigan.tidemail.tideEmail.EmailFormatter;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
-import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseListRecord;
+import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseRecordList;
 import com.ericbrannigan.tidemail.tideEmail.Records.TidePredictionResponse;
 import com.ericbrannigan.tidemail.tideEmail.Records.TideResponseRecordList;
 
@@ -12,7 +12,7 @@ public class TidemailFormatter {
 
   public String format(
     TideResponseRecordList tideResponse,
-    StationResponseListRecord stationResponse
+    StationResponseRecordList stationResponse
   ) {
     StringBuilder sb = new StringBuilder();
     sb.append("<pre>");

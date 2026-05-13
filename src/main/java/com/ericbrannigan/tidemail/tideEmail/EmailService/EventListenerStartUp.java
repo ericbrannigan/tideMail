@@ -2,7 +2,7 @@ package com.ericbrannigan.tidemail.tideEmail.EmailService;
 
 import com.ericbrannigan.tidemail.tideEmail.EmailFormatter.TidemailFormatter;
 import com.ericbrannigan.tidemail.tideEmail.EmailService.EmailService;
-import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseListRecord;
+import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseRecordList;
 import com.ericbrannigan.tidemail.tideEmail.Records.TideResponseRecordList;
 import com.ericbrannigan.tidemail.tideEmail.Services.NoaaTideService;
 import java.time.LocalDate;
@@ -39,7 +39,7 @@ public class EventListenerStartUp {
         "8531680",
         date
       );
-      StationResponseListRecord stationResponse =
+      StationResponseRecordList stationResponse =
         noaaTideService.getStationInfo("8531680");
       String body = tidemailFormatter.format(tideResponse, stationResponse);
       emailService.sendTideMail("pkmntrnreric@gmail.com", body);

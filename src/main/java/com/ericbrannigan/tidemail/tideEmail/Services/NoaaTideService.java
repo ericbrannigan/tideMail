@@ -4,7 +4,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseListRecord;
+import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseRecordList;
 import com.ericbrannigan.tidemail.tideEmail.Records.TideResponseRecordList;
 
 @Service
@@ -36,7 +36,7 @@ public class NoaaTideService {
       .body(TideResponseRecordList.class);
   }
 
-  public StationResponseListRecord getStationInfo(String stationID) {
+  public StationResponseRecordList getStationInfo(String stationID) {
     return client
       .get()
       .uri(uriBuilder ->
@@ -46,6 +46,6 @@ public class NoaaTideService {
       )
       .accept(MediaType.APPLICATION_JSON)
       .retrieve()
-      .body(StationResponseListRecord.class);
+      .body(StationResponseRecordList.class);
   }
 }

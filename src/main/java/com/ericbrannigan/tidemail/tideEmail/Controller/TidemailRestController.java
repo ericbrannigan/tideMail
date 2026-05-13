@@ -2,7 +2,7 @@ package com.ericbrannigan.tidemail.tideEmail.Controller;
 
 import com.ericbrannigan.tidemail.tideEmail.EmailFormatter.TidemailFormatter;
 import com.ericbrannigan.tidemail.tideEmail.EmailService.EmailService;
-import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseListRecord;
+import com.ericbrannigan.tidemail.tideEmail.Records.StationResponseRecordList;
 import com.ericbrannigan.tidemail.tideEmail.Records.TideResponseRecordList;
 import com.ericbrannigan.tidemail.tideEmail.Services.NoaaTideService;
 import java.time.LocalDate;
@@ -45,7 +45,7 @@ public class TidemailRestController {
       stationID,
       date
     );
-    StationResponseListRecord stationResponse = noaaTideService.getStationInfo(
+    StationResponseRecordList stationResponse = noaaTideService.getStationInfo(
       stationID
     );
     return tidemailFormatter.format(tideResponse, stationResponse);
